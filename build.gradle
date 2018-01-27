@@ -1,7 +1,8 @@
 buildscript {
-	ext {
+
+
+    ext {
 		springBootVersion = '2.0.0.M7'
-//		springBootVersion = '1.5.9'
 	}
 	repositories {
 		mavenCentral()
@@ -13,14 +14,16 @@ buildscript {
 	}
 }
 
+plugins {
+    id "com.gorylenko.gradle-git-properties" version "1.4.17"
+}
+
 apply plugin: 'groovy'
-apply plugin: 'eclipse-wtp'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'war'
 
 group = 'org.mrpaulwoods'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
 sourceCompatibility = 1.8
 
 repositories {
@@ -39,13 +42,20 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.codehaus.groovy:groovy')
 	runtime('org.springframework.boot:spring-boot-devtools')
-	runtime('mysql:mysql-connector-java')
 	compile('org.springframework.boot:spring-boot-starter-tomcat')
 	compile 'com.github.ben-manes.caffeine:caffeine:2.6.1'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
 	compile('org.springframework.security:spring-security-oauth2-client')
+}
+
+bootJar {
+	launchScript()
+}
+
+springBoot {
+	buildInfo()
 }

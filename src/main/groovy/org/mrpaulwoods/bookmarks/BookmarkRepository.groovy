@@ -1,7 +1,7 @@
 package org.mrpaulwoods.bookmarks
 
-import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.mongodb.repository.MongoRepository
 
-interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
+interface BookmarkRepository extends MongoRepository<Bookmark, Long> {
 
 }
