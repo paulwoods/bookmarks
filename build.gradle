@@ -2,16 +2,16 @@ buildscript {
 
 
     ext {
-		springBootVersion = '2.0.0.M7'
-	}
-	repositories {
-		mavenCentral()
-		maven { url "https://repo.spring.io/snapshot" }
-		maven { url "https://repo.spring.io/milestone" }
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+        springBootVersion = '2.0.0.M7'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 plugins {
@@ -27,35 +27,35 @@ version = '1.0.0'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
-	maven { url "https://repo.spring.io/snapshot" }
-	maven { url "https://repo.spring.io/milestone" }
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
 }
 
 configurations {
-	providedRuntime
+    providedRuntime
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-cache')
-	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-	compile('org.codehaus.groovy:groovy')
-	runtime('org.springframework.boot:spring-boot-devtools')
-	compile('org.springframework.boot:spring-boot-starter-tomcat')
-	compile 'com.github.ben-manes.caffeine:caffeine:2.6.1'
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.springframework.security:spring-security-test')
-	compile('org.springframework.security:spring-security-oauth2-client')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-cache')
+//	compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+    compile('org.codehaus.groovy:groovy')
+    runtime('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-tomcat')
+    compile 'com.github.ben-manes.caffeine:caffeine:2.6.1'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+//	testCompile('org.springframework.security:spring-security-test')
+    compile('org.springframework.security:spring-security-oauth2-client')
 }
 
 bootJar {
-	launchScript()
+    launchScript()
 }
-
-springBoot {
-	buildInfo()
-}
+//
+//springBoot {
+//	buildInfo()
+//}

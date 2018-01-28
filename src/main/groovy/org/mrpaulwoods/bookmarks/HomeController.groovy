@@ -1,7 +1,6 @@
 package org.mrpaulwoods.bookmarks
 
 import groovy.util.logging.Slf4j
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseBody
-import org.springframework.web.bind.annotation.RestController
 
 import javax.validation.Valid
 import java.security.Principal
@@ -42,7 +40,7 @@ class HomeController {
     @PostMapping("/add")
     String add(@Valid BookmarkForm bookmarkForm, BindingResult result) {
         log.info "add(bookmarkForm=$bookmarkForm)"
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             "index"
         } else {
             "redirect:/"

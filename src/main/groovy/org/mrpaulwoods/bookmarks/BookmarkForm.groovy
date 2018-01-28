@@ -14,13 +14,13 @@ class BookmarkForm implements Serializable {
 
     @NotNull
     @NotBlank
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String name
 
     @NotNull
     @NotBlank
     @URL
-    @Size(min=1, max=300)
+    @Size(min = 1, max = 300)
     String url
 
 }
