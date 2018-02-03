@@ -30,19 +30,17 @@ class HomeController {
         "index"
     }
 
-    @GetMapping("/user")
-    @ResponseBody
-    Principal user(Principal principal) {
-        log.info "user() - returning principal=$principal"
-        principal
-    }
-
     @PostMapping("/add")
-    String add(@Valid BookmarkForm bookmarkForm, BindingResult result) {
+    String add(@Valid BookmarkForm bookmarkForm, BindingResult result, Model model) {
         log.info "add(bookmarkForm=$bookmarkForm)"
         if (result.hasErrors()) {
+            model.addAttribute "error", "Please correct the errors below."
             "index"
         } else {
+            bookmarkService.create new Bookmark(
+                    name: bookmarkForm.name,
+                    url: bookmarkForm.url
+            )
             "redirect:/"
         }
     }
