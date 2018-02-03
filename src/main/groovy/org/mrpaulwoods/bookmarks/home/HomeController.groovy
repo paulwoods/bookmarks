@@ -1,16 +1,17 @@
-package org.mrpaulwoods.bookmarks
+package org.mrpaulwoods.bookmarks.home
 
 import groovy.util.logging.Slf4j
+import org.mrpaulwoods.bookmarks.bookmark.Bookmark
+import org.mrpaulwoods.bookmarks.bookmark.BookmarkForm
+import org.mrpaulwoods.bookmarks.bookmark.BookmarkService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseBody
 
 import javax.validation.Valid
-import java.security.Principal
 
 @Slf4j
 @Controller

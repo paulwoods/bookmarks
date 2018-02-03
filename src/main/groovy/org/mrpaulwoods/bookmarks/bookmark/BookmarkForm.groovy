@@ -1,4 +1,4 @@
-package org.mrpaulwoods.bookmarks
+package org.mrpaulwoods.bookmarks.bookmark
 
 import groovy.transform.Canonical
 import org.hibernate.validator.constraints.URL

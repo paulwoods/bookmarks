@@ -1,6 +1,8 @@
 package org.mrpaulwoods.bookmarks
 
 import groovy.util.logging.Slf4j
+import org.mrpaulwoods.bookmarks.bookmark.Bookmark
+import org.mrpaulwoods.bookmarks.bookmark.BookmarkService
 import org.springframework.stereotype.Service
 
 import javax.annotation.PostConstruct

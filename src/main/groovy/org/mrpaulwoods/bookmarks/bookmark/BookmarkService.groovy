@@ -1,4 +1,4 @@
-package org.mrpaulwoods.bookmarks
+package org.mrpaulwoods.bookmarks.bookmark
 
 import groovy.util.logging.Slf4j
 import org.springframework.data.domain.Sort

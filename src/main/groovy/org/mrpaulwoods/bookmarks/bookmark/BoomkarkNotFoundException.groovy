@@ -1,4 +1,4 @@
-package org.mrpaulwoods.bookmarks
+package org.mrpaulwoods.bookmarks.bookmark
 
 class BoomkarkNotFoundException extends RuntimeException {
 

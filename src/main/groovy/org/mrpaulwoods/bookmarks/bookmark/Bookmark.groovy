@@ -1,4 +1,4 @@
-package org.mrpaulwoods.bookmarks
+package org.mrpaulwoods.bookmarks.bookmark
 
 import groovy.transform.Canonical
 import org.springframework.data.annotation.Id
@@ -8,6 +8,10 @@ class Bookmark {
 
     @Id
     String id
+
     String name
+
     String url
+
+    List<String> tags = []
 }
