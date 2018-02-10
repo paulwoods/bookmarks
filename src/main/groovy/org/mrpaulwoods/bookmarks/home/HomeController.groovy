@@ -1,49 +1,18 @@
 package org.mrpaulwoods.bookmarks.home
 
 import groovy.util.logging.Slf4j
-import org.mrpaulwoods.bookmarks.bookmark.Bookmark
-import org.mrpaulwoods.bookmarks.bookmark.BookmarkForm
-import org.mrpaulwoods.bookmarks.bookmark.BookmarkService
 import org.springframework.stereotype.Controller
-import org.springframework.ui.Model
-import org.springframework.validation.BindingResult
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
-
-import javax.validation.Valid
 
 @Slf4j
 @Controller
 @RequestMapping
 class HomeController {
 
-    private BookmarkService bookmarkService
-
-    HomeController(BookmarkService bookmarkService) {
-        this.bookmarkService = bookmarkService
-    }
-
-    @GetMapping
-    String index(final Model model) {
+    @RequestMapping
+    String index() {
         log.info "index()"
-        model.addAttribute "bookmarkForm", new BookmarkForm()
-        "index"
-    }
-
-    @PostMapping("/add")
-    String add(@Valid BookmarkForm bookmarkForm, BindingResult result, Model model) {
-        log.info "add(bookmarkForm=$bookmarkForm)"
-        if (result.hasErrors()) {
-            model.addAttribute "error", "Please correct the errors below."
-            "index"
-        } else {
-            bookmarkService.create new Bookmark(
-                    name: bookmarkForm.name,
-                    url: bookmarkForm.url
-            )
-            "redirect:/"
-        }
+        "home/index"
     }
 
 }

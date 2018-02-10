@@ -1,7 +1,6 @@
 package org.mrpaulwoods.bookmarks.bookmark
 
 import groovy.util.logging.Slf4j
-import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 
 @Slf4j
@@ -10,41 +9,44 @@ class BookmarkService {
 
     BookmarkRepository bookmarkRepository
 
-    BookmarkService(BookmarkRepository bookmarkRepository) {
+    BookmarkService(
+            BookmarkRepository bookmarkRepository
+    ) {
         this.bookmarkRepository = bookmarkRepository
     }
 
-    Bookmark create(Bookmark bookmark) {
-        log.info "create(bookmark:$bookmark)"
-        bookmarkRepository.save bookmark
+    List<Bookmark> list() {
+        this.bookmarkRepository.findAll()
     }
 
-    Bookmark read(Long id) {
-        log.info "read(id:$id)"
-        Optional<Bookmark> bookmark = bookmarkRepository.findById(id)
-        if (!bookmark.isPresent()) {
-            throw new BoomkarkNotFoundException()
+    Bookmark read(String id) {
+        Optional<Bookmark> bookmark = this.bookmarkRepository.findById(id)
+        if (bookmark.isPresent()) {
+            bookmark.get()
+        } else {
+            throw new BookmarkNotFoundException()
         }
-        bookmark.get()
     }
 
     void update(Bookmark bookmark) {
-        log.info "update(bookmark:$bookmark)"
         bookmarkRepository.save bookmark
     }
 
     void delete(Bookmark bookmark) {
-        log.info "delete(bookmark:$bookmark)"
-        bookmarkRepository.delete bookmark
+        bookmarkRepository.delete bookmark.id
     }
 
-    List<Bookmark> list() {
-        log.info "list()"
-        bookmarkRepository.findAll(new Sort(Sort.Direction.ASC, "name"))
+    Bookmark upVote(String id) {
+        Bookmark bookmark = read(id)
+        bookmark.votes++
+        update bookmark
+        bookmark
     }
 
-    boolean count() {
-        log.info "count()"
-        bookmarkRepository.count()
+    Bookmark downVote(String id) {
+        Bookmark bookmark = read(id)
+        bookmark.votes--
+        update bookmark
+        bookmark
     }
 }

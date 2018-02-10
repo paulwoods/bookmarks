@@ -13,5 +13,7 @@ class Bookmark {
 
     String url
 
+    int votes = 0
+
     List<String> tags = []
 }
