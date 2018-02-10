@@ -15,11 +15,13 @@ class BookmarkService {
         this.bookmarkRepository = bookmarkRepository
     }
 
-    List<Bookmark> list() {
-        this.bookmarkRepository.findAll()
+    Bookmark create(Bookmark bookmark) {
+        log.info "create(bookmark:$bookmark)"
+        bookmarkRepository.save bookmark
     }
 
     Bookmark read(String id) {
+        log.info "read(id:$id)"
         Optional<Bookmark> bookmark = this.bookmarkRepository.findById(id)
         if (bookmark.isPresent()) {
             bookmark.get()
@@ -29,14 +31,22 @@ class BookmarkService {
     }
 
     void update(Bookmark bookmark) {
+        log.info "update(bookmark:$bookmark)"
         bookmarkRepository.save bookmark
     }
 
     void delete(Bookmark bookmark) {
+        log.info "delete(bookmark:$bookmark)"
         bookmarkRepository.delete bookmark.id
     }
 
+    List<Bookmark> list() {
+        log.info "list()"
+        this.bookmarkRepository.findAll()
+    }
+
     Bookmark upVote(String id) {
+        log.info "upVote(id:$id)"
         Bookmark bookmark = read(id)
         bookmark.votes++
         update bookmark
@@ -44,9 +54,11 @@ class BookmarkService {
     }
 
     Bookmark downVote(String id) {
+        log.info "downVote(id:$id)"
         Bookmark bookmark = read(id)
         bookmark.votes--
         update bookmark
         bookmark
     }
+
 }
