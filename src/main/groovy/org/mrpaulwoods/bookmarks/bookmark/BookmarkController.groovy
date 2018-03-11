@@ -3,6 +3,7 @@ package org.mrpaulwoods.bookmarks.bookmark
 import groovy.util.logging.Slf4j
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 
@@ -12,6 +13,7 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("/bookmark")
 @CrossOrigin(origins = "*")
+@PreAuthorize("hasAuthority('ROLE_USER')")
 class BookmarkController {
 
     BookmarkService bookmarkService
