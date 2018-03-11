@@ -23,17 +23,22 @@
         <tbody>
         <tr>
             <td>GET</td>
-            <td>/bookmarks</td>
+            <td>/bookmark</td>
             <td>Returns an array of all bookmarks</td>
         </tr>
         <tr>
             <td>POST</td>
-            <td>/bookmarks/:id/up</td>
+            <td>/bookmark</td>
+            <td>create a bookmark. {name:'', url:''}</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/bookmark/:id/up</td>
             <td>Increases the vote count of the bookmark</td>
         </tr>
         <tr>
             <td>POST</td>
-            <td>/bookmarks/:id/down</td>
+            <td>/bookmark/:id/down</td>
             <td>Decreases the vote count of the bookmark</td>
         </tr>
         </tbody>

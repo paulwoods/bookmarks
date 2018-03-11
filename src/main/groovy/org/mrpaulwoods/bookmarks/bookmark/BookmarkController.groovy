@@ -11,7 +11,7 @@ import javax.validation.Valid
 @Slf4j
 @RestController
 @RequestMapping("/bookmark")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 class BookmarkController {
 
     BookmarkService bookmarkService

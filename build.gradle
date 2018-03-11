@@ -1,13 +1,11 @@
 buildscript {
 
     ext {
-        springBootVersion = '2.0.0.RC1'
+        springBootVersion = '2.0.0.RELEASE'
     }
 
     repositories {
         mavenCentral()
-        maven { url "https://repo.spring.io/snapshot" }
-        maven { url "https://repo.spring.io/milestone" }
     }
 
     dependencies {
@@ -26,8 +24,6 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-    maven { url "https://repo.spring.io/snapshot" }
-    maven { url "https://repo.spring.io/milestone" }
 }
 
 configurations {
@@ -38,6 +34,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.codehaus.groovy:groovy')
     runtime('org.springframework.boot:spring-boot-devtools')
