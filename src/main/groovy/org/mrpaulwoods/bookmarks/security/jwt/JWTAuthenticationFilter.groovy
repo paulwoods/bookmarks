@@ -66,7 +66,9 @@ class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
             Authentication auth
     ) throws IOException, ServletException {
 
+
         String token = Jwts.builder()
+
                 .setSubject(((User) auth.getPrincipal()).getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
@@ -75,6 +77,9 @@ class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         log.info "successfulAuthentication. token=$token"
 
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token)
+
+        res.outputStream.println """{"token":"$token"}"""
+        res.outputStream.flush()
     }
 
 }
